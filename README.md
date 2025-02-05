@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# YeetThatTx - Solana Transaction Tool
+
+## Overview
+
+YeetThatTx is a web-based tool that allows users to deserialize and send Solana transactions easily. It supports both versioned and legacy transactions, as well as message deserialization.
+
+## Features
+
+- **Deserialize Messages**: Input a base64-encoded Solana message and decode it.
+- **Deserialize Transactions**: Handles both versioned and legacy transactions.
+- **Send Transactions**: Send deserialized transactions to the Solana blockchain.
+- **Wallet Integration**: Uses Solana Wallet Adapter for seamless transaction signing.
+
+## Tech Stack
+
+- **Frontend**: React.js (Next.js Client Components)
+- **Solana SDK**: `@solana/web3.js`
+- **Wallet Adapter**: `@solana/wallet-adapter-react`
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js (>=16)
+- Yarn or npm
+- Solana wallet (Phantom, Solflare, etc.)
+
+### Installation
+
+```sh
+# Clone the repository
+git clone https://github.com/sahilkakwani9/YeetThatTx.git
+cd YeetThatTx
+
+# Install dependencies
+yarn install  # or npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Running the Project
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+yarn dev  # or npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open your browser and go to `http://localhost:3000`.
 
-## Learn More
+## Usage
 
-To learn more about Next.js, take a look at the following resources:
+1. **Deserialize a Message**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   - Paste a base64-encoded message in the "Serialized Message" input field.
+   - Click "Deserialize Message & Send Transaction" to sign and send it using your connected wallet.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Deserialize & Send a Transaction**
+   - Paste a base64-encoded transaction in the "Serialized Transaction" field.
+   - Click "Deserialize & Send Transaction" to sign and send it using your connected wallet.
+   - The app will attempt to deserialize using `VersionedTransaction.deserialize` first, and fall back to `Transaction.from` if needed.
 
-## Deploy on Vercel
+## Troubleshooting
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- If the transaction fails to deserialize, ensure that it is correctly encoded in base64.
+- If the wallet is not detected, make sure your wallet extension is installed and connected.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contributions
+
+Feel free to fork the repository and submit pull requests with improvements.
